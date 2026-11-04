@@ -1,0 +1,13 @@
+-- Correção sugerida para o trigger on_auth_user_created (seção 6.1 da documentação).
+-- Problema: o `tipo` é lido de raw_user_meta_data, que o PRÓPRIO usuário controla no
+-- signup, então qualquer pessoa consegue se cadastrar como 'admin'.
+-- Correção: ler de raw_app_meta_data, que só pode ser escrito com a service_role
+-- (o back end já envia o tipo nos dois lugares).
+--
+-- Na função handle_new_user (ou o nome que ela tiver), troque esta linha:
+--     COALESCE((NEW.raw_user_meta_data->>'tipo')::tipo_usuario, 'cliente')
+-- por:
+--     COALESCE((NEW.raw_app_meta_data->>'tipo')::tipo_usuario, 'cliente')
+--
+-- Peça a função completa ao colega que fez o banco (script clinica_supabase.sql)
+-- e use CREATE OR REPLACE FUNCTION mantendo o resto igual.
