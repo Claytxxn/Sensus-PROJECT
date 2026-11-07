@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Paleta SENSUS
+   - sensus: azul-petróleo institucional (marca, títulos, CTAs)
+   - cream: fundo off-white acolhedor
+   - sand: tons areia/oliva (selos "Presencial", avisos)
+   - sky: azul claro (selos "Online/Vídeo")
+   - mist: cinza neutro (rodapé, bordas)
+   ============================================================ */
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-sensus-50: #eef6f9;
+  --color-sensus-100: #d6e9f0;
+  --color-sensus-200: #aed3e1;
+  --color-sensus-300: #7fb6cb;
+  --color-sensus-400: #3f8aa8;
+  --color-sensus-500: #1f6f8f;
+  --color-sensus-600: #13607e;
+  --color-sensus-700: #0b4f6c;
+  --color-sensus-800: #083f57;
+  --color-sensus-900: #062f41;
+
+  --color-cream: #f9f8f6;
+  --color-cream-dark: #f1efeb;
+
+  --color-sand-100: #efe8cc;
+  --color-sand-200: #e2d7a8;
+  --color-sand-700: #6b5a1e;
+  --color-sand-800: #4f4416;
+
+  --color-sky-soft: #d9eefb;
+  --color-sky-ink: #0d4a73;
+
+  --color-mist: #e4e3e3;
+  --color-line: #d4d4d8;
+  --color-ink: #1c1d1f;
+  --color-ink-soft: #4a4d52;
+
+  --color-alert-50: #fdf1f0;
+  --color-alert-600: #b42318;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-ink antialiased;
+  }
+  h1, h2, h3 {
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  .container-sensus {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-sensus-700 px-7 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-sensus-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sensus-500 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-sand-800/70 bg-white px-6 py-3 text-sm font-medium text-sand-800 transition hover:bg-sand-100/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sensus-500;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-sensus-700 transition hover:bg-sensus-50;
+  }
+  .label {
+    @apply mb-2 block text-sm font-medium text-ink;
+  }
+  .label-caps {
+    @apply mb-2 block text-xs font-semibold uppercase tracking-wider text-ink-soft;
+  }
+  .input {
+    @apply w-full rounded-lg border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-zinc-400 transition outline-none focus:border-sensus-500 focus:ring-3 focus:ring-sensus-100;
+  }
+  .input-error {
+    @apply border-alert-600 focus:border-alert-600 focus:ring-alert-50;
+  }
+  .card {
+    @apply rounded-2xl border border-zinc-200 bg-white shadow-[0_2px_12px_-4px_rgba(11,79,108,0.08)];
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .badge-presencial {
+    @apply bg-sand-100 text-sand-700;
+  }
+  .badge-online {
+    @apply bg-sky-soft text-sky-ink;
+  }
+  .section-title {
+    @apply text-2xl font-bold text-sensus-700 sm:text-3xl;
+  }
+}
